@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form class="reserv_form" action="/reservation_result" method="post">
+         <p><input type="text" name="fio" placeholder="Фио" value="{{ fio }}" required></p>
+        {% for table in tables %}
+            <button class="{% if table.reserved %}button disabled{% endif %}"
+                    type="submit"
+                    name="table"
+                    value="{{ table.obj.number }}">
+                <img src="{{ url_for('static', filename='img/table_icon1.jpg') }}" alt="Submit Form">
+            </button>
+        {% endfor %}
+    </form>
+{% endblock content %}

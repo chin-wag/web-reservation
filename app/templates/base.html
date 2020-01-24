@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Barbette</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style type="text/css">
+            body {
+                background: url({{ url_for('static', filename='img/background.jpg') }});
+            }
+            .menu-main {
+                list-style: none;
+                padding: 25px 0 5px;
+                text-align: right;
+                background: white;
+            }
+            .menu-main li {display: inline-block;}
+            .menu-main li:after {
+                content: "|";
+                color: #606060;
+                display: inline-block;
+                vertical-align:top;
+            }
+            .menu-main li:last-child:after {content: none;}
+            .menu-main a {
+                text-decoration: none;
+                font-family: 'Ubuntu Condensed', sans-serif;
+                letter-spacing: 2px;
+                position: relative;
+                padding-bottom: 20px;
+                margin: 0 34px 0 30px;
+                font-size: 17px;
+                text-transform: uppercase;
+                display: inline-block;
+                transition: color .2s;
+            }
+            .menu-main a, .menu-main a:visited {color: #650303;}
+            .menu-main a.current, .menu-main a:hover{color: #650303;}
+            .menu-main a:before,
+            .menu-main a:after {
+                content: "";
+                position: absolute;
+                height: 4px;
+                top: auto;
+                right: 50%;
+                bottom: -5px;
+                left: 50%;
+                background: #650303;
+                transition: .8s;
+            }
+            .menu-main a:hover:before, .menu-main .current:before {left: 0;}
+            .menu-main a:hover:after, .menu-main .current:after {right: 0;}
+
+            .logo-main {
+                margin: 90px 35px 0 0;
+                text-align: right;
+            }
+
+            .tables {
+                background-color: #ffffff;
+                text-align: center;
+                margin: 0 60px 0 60px;
+            }
+            .table {
+                display: inline-block;
+                padding: 20px;
+            }
+
+            .button.disabled {
+                opacity: 0.65;
+                cursor: not-allowed;
+            }
+
+            .reserv_form {
+                margin: 250px 0 0 800px;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <ul class="menu-main">
+        <li><a href="/index">Главная</a></li>
+        <li><a href="/reservation">Бронирование</a></li>
+        </ul>
+
+        {% block content %}{% endblock content %}
+    </body>
+</html>
